@@ -1,0 +1,23 @@
+
+.git
+.eggs
+eggs
+lib
+lib64
+parts
+sdist
+var
+*.pyc
+*.swp
+.DS_Store
+./.polyaxon
+.DS_Store
+
+# ignore data files and analysis
+analysis.ipynb
+data
+*.md
+model
+*.csv
+*.json
+*.h5

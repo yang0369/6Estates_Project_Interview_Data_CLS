@@ -1,0 +1,27 @@
+---
+version: 1
+
+kind: experiment
+
+build:
+  dockerfile: polyaxon/docker/experiment.df
+  context: .
+
+environment:
+  configmap_refs: ["xtrain-ecs"] # Set this to the key that will be provided to you
+  persistence:
+    data: ["data"]
+    outputs: exp-output
+  resources:
+    gpu: # Add gpu
+      requests: 1
+      limits: 1
+    cpu:
+      requests: 4
+      limits: 4
+
+logging:
+  level: DEBUG
+
+run:
+  cmd: python -m src.experiment_6estate --config_path src/config_6estate.yml

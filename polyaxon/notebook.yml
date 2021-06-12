@@ -1,0 +1,19 @@
+---
+version: 1
+
+kind: notebook
+
+build:
+  dockerfile: polyaxon/docker/notebook.df
+  context: .
+
+environment:
+  configmap_refs: ["xtrain-ecs"] # Set this to the key that will be provided to you
+  persistence:
+    data: ["data"]
+    outputs: exp-output
+
+
+logging:
+  level: DEBUG
+
