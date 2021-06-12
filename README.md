@@ -1,12 +1,12 @@
-# About This Project
+# About The Project
 
 This project is an interview assignment with a binary sentiment analysis problem.
 
-To address the stated problem, I have tempted to resolve it by NLP technique.
+To address the stated problem, I have tried with a few traditional machine learning and deep learning models.
 
 The models that I have tried are:
 
-- [ ] Bert
+- [ ] Distilled Bert
 - [ ] TF-IDF + logistic regression
 - [ ] TF-IDF + random forest
 
@@ -21,13 +21,22 @@ The reference links that I have referred:
 
 
 # Project Structure
+```
 📦6Estates_Project_Interview_Data_CLS
- ┣ 📂.ipynb_checkpoints
- ┃ ┗ 📜notebook-checkpoint.ipynb
  ┣ 📂.polyaxon
  ┃ ┣ 📜.polyaxongroup
  ┃ ┣ 📜.polyaxonproject
  ┃ ┗ 📜.polyaxonxp
+ ┣ 📂data
+ ┃ ┣ 📜dev.json
+ ┃ ┣ 📜glove.840B.300d.txt
+ ┃ ┣ 📜test.json
+ ┃ ┗ 📜train.json
+ ┣ 📂model
+ ┃ ┣ 📜config.json
+ ┃ ┣ 📜history.csv
+ ┃ ┣ 📜predicted.csv
+ ┃ ┗ 📜tf_model.h5
  ┣ 📂polyaxon
  ┃ ┣ 📂docker
  ┃ ┃ ┣ 📜experiment.df
@@ -36,22 +45,23 @@ The reference links that I have referred:
  ┃ ┗ 📜notebook.yml
  ┣ 📂scripts
  ┃ ┗ 📜link_workspace.sh
- ┣ 📂__pycache__
- ┃ ┗ 📜datapipeline.cpython-36.pyc
+ ┣ 📂src
+ ┃ ┣ 📂__pycache__
+ ┃ ┃ ┣ 📜datapipeline_6estate.cpython-36.pyc
+ ┃ ┃ ┣ 📜experiment_6estate.cpython-36.pyc
+ ┃ ┃ ┗ 📜__init__.cpython-36.pyc
+ ┃ ┣ 📜config_6estate.yml
+ ┃ ┣ 📜datapipeline_6estate.py
+ ┃ ┣ 📜experiment_6estate.py
+ ┃ ┗ 📜__init__.py
+ ┣ 📜.gitignore
  ┣ 📜.polyaxonignore
  ┣ 📜analysis.ipynb
  ┣ 📜conda.yml
- ┣ 📜config_6estate.yml
- ┣ 📜datapipeline_6estate.py
- ┣ 📜dev.json
- ┣ 📜experiment_6estate.py
- ┣ 📜glove.840B.300d.txt
  ┣ 📜README.md
- ┣ 📜readme_6estate.md
  ┣ 📜skaffold.yaml
- ┣ 📜test.json
- ┣ 📜train.json
  ┗ 📜__init__.py
+```
 
 ### Details
 
