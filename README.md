@@ -10,6 +10,10 @@ The models that I have tried are:
 - [ ] TF-IDF + logistic regression
 - [ ] TF-IDF + random forest
 
+The BERT model was trained on Polyaxon platform while the other two models were trained on jupyter notebook(📜analysis.ipynb) locally. 
+
+In addition, I have also conducted a result analysis in 📜analysis.ipynb regarding the model's performance.
+
 # Project Structure
 ```
 📦6Estates_Project_Interview_Data_CLS
@@ -51,7 +55,7 @@ The models that I have tried are:
  ┗ 📜__init__.py
 ```
 
-# Details About The Directories
+# Directory Details 
 
  ┣ 📂.polyaxon
 
@@ -65,32 +69,36 @@ The models that I have tried are:
 
 > All files generated during model training, including:  
 >
-> 				- 📜config.json: contains all the trained weights/parameters
+> - 📜config.json: contains all the weights/parameters for the trained BERT model
 >
->    - 📜history.csv: contains the loss/accuracy during training and validation, used for plotting graph
+>    - 📜history.csv: contains the loss/accuracy during training and validation
 >    - 📜predicted.csv: contains all the predicted labels for test dataset
->    - 📜tf_model.h5: the trained model in .h5 format (not uploaded due to size limit)
+>    - 📜tf_model.h5: the trained model in .h5 format (not uploaded to Git due to size limit)
 >    - 📜info.log: records all the hyperparameters/parameters during training process
 >    - 📜training_logs: records all the training epochs, train/val accuracy and loss etc.
 
  ┣ 📂polyaxon
 
-> Dockerfiles for setting up the running environment for polyaxon experiment
+> Dockerfiles for setting up the running environment for Polyaxon experiment
 
 ┣ 📂scripts
 
-> A script to setup persistent data storage on polyaxon
+> A script to setup persistent data storage on Polyaxon
 
  ┣ 📂src
 
 > The source code folder, which contains the main python scripts for this project
-> - 📜config_6estate.yml: passing path and hyperparameters to the script, which makes the hyperparameter tuning easier 
-> - 📜datapipeline_6estate.py: the one-stop pipeline to run data cleaning, data preprocessing and model training, evaluation. Please refer to "User Guide" section on how to run this pipeline.
-> - 📜experiment_6estate.py: this script is created for training BERT model on Polyaxon platform, the main reason why I trained model on Polyaxon compared to local machine is the super fast training speed. It takes only about 15 minutes by the GPU on Polyaxon!
+> - 📜config_6estate.yml: config file with required paths and hyperparameters, which makes the hyperparameter tuning easier 
+> - 📜datapipeline_6estate.py: the one-stop pipeline to run data preprocessing and model training. Please refer to "User Guide" on how to run it.
+> - 📜experiment_6estate.py: the script for training BERT model on Polyaxon platform, the main reason why I trained model on Polyaxon compared to local machine is the super fast training speed. It takes less than 15 minutes by the GPU on Polyaxon!
 
 📜analysis.ipynb 
 
-> The main analysis notebook, where a simple EDA was performed. Based on this notebook, we can know what kind of dataset out there, the basic statistics about the dataset, and also what data cleaning process should be applied. In addition, I have performed the Model result analysis on this notebook as well.
+> The main analysis notebook, where a simple EDA was performed. Based on this notebook, we can know what kind of dataset out there, the basic statistics about the dataset, and also what data cleaning process should be applied. 
+>
+> The TF-IDF models was trained on this notebook. 
+>
+> The last part is "BERT Model Result Analysis" - the analysis of BERT model's prediction result.
 
  📜conda.yml
 
@@ -98,7 +106,7 @@ The models that I have tried are:
 
 # User guide 
 
-For the purpose of simplicity, this project has one and only one python script to run the data processsing pipeline and modelling pipeline.
+For the purpose of simplicity, this project has one and only one python script to run the data processing pipeline and modelling pipeline.
 
 Just simply go to your command prompt(windows) or terminal(linux), change the working directory to the project parent folder. e.g. in my case, I saved the project martials in the directory of "D:\personal_git\6Estates_Project_Interview_CLS\6Estates_Project_Interview_Data_CLS"
 
@@ -114,7 +122,7 @@ python -m src.datapipeline_6estate --config_path src/config_6estate.yml
 
 That's it, the pipeline will run itself locally and generate all the modelling information, parameters, artefacts and trained model automatically, and all of them will be stored at  ┣ 📂model folder.
 
-Please take note that my model was trained on Polyaxon platform, which is why I can train the model with a very huge memory space and super fast compute speed. However, if you need to run it locally, you may need to adjust the batch size, Number of epochs etc to avoid the out of memory(OOM) issue.
+Please take note that my model was trained on Polyaxon platform, which is why I can train the model with a very huge memory space and super fast compute speed. However, if you need to run it locally, you may need to adjust the batch size, Number of epochs etc. to avoid the out of memory(OOM) issue.
 
 # About analysis.ipynb 
 
@@ -211,9 +219,7 @@ Based on the trained model, we can get the confusion matrix as below(refer to th
 
 <img src=".\confusion_matrix.png" alt="confusion matrix" style="zoom:50%;" />
 
-In addition, the recall is 0.9 and precision is 0.86, both of them are acceptable as expected.
-
-
+In addition, the recall is 0.9 and precision is 0.86, both of them are acceptable as expected. The predicted labels can be found in 📜predicted.csv.
 
 # Reference
 
