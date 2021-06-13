@@ -2,17 +2,27 @@
 
 This project is about an interview assignment with a binary sentiment analysis problem.
 
-To address the stated problem, I have tried with two traditional NLP models and one cutting edge transformer model.
+To address the stated problem, I have tried three models:
 
-The models that I have tried are:
+- [ ] BERT model - **0.88** binary accuracy 
+- [ ] TF-IDF + logistic regression - **0.51** binary accuracy
+- [ ] TF-IDF + random forest - **0.53** binary accuracy
 
-- [ ] BERT model
-- [ ] TF-IDF + logistic regression
-- [ ] TF-IDF + random forest
+The BERT model was trained on Polyaxon platform while the other two models were trained on 
 
-The BERT model was trained on Polyaxon platform while the other two models were trained on jupyter notebook(📜analysis.ipynb) locally. 
+📜analysis.ipynb locally. 
 
-In addition, I have also conducted a result analysis in 📜analysis.ipynb regarding the model's performance.
+I have also conducted a result analysis in 📜analysis.ipynb regarding the BERT model's performance.
+
+To address the project requirements:
+
+> - a single entry to train and test model by running  📜datapipeline_6estate.py(Refer to "User guide" section on how to run it)
+>
+> - prediction result for test.json are stored in 📜predicted.csv.
+>
+> -  evaluation result for training and predicting performance are stored in 📜training_logs.log and 
+>
+>   📜info.log
 
 # Project Structure
 ```
@@ -32,7 +42,7 @@ In addition, I have also conducted a result analysis in 📜analysis.ipynb regar
  ┃ ┣ 📜predicted.csv
  ┃ ┣ 📜tf_model.h5
  ┃ ┗ 📜info.log
- ┃ ┗ 📜training_logs
+ ┃ ┗ 📜training_logs.log
  ┣ 📂polyaxon
  ┃ ┣ 📂docker
  ┃ ┃ ┣ 📜experiment.df
@@ -75,7 +85,7 @@ In addition, I have also conducted a result analysis in 📜analysis.ipynb regar
 >    - 📜predicted.csv: contains all the predicted labels for test dataset
 >    - 📜tf_model.h5: the trained model in .h5 format (not uploaded to Git due to size limit)
 >    - 📜info.log: records all the hyperparameters/parameters during training process
->    - 📜training_logs: records all the training epochs, train/val accuracy and loss etc.
+>    - 📜training_logs.log: records all the training epochs, train/val accuracy and loss etc.
 
  ┣ 📂polyaxon
 
@@ -148,26 +158,21 @@ Second, some basic data cleaning steps performed on "Data Cleaning" part:
 - Expand contractions by regular expression. I did not use package to expand as most of the packages requires long processing time.
 - Process data by "DataPipeline", please refer to the "DataPipeline" section for more details
 
-Third, I tried TF-IDF model to compare it's performance with NN model.
+Third, I tried two TF-IDF models to benchmark their performance to BERT model.
 
-TF-IDF is an simple and time efficient way of analyzing text data. The drawbacks is very obvious - it cannot analyze the relationship between words, also it ignores the sequence, context and grammar completely. since it is time efficient, we can take it as the benchmark of this project.
+(ps: TF-IDF is an simple and time efficient way of analyzing text data. The drawbacks is very obvious - it cannot analyze the relationship between words, also it ignores the sequence, context and grammar completely. Since they are time efficient, we can take them as the benchmark for this project)
 
-I have tried two of the most commonly used model, and below are their performance (accuracy):
-
-- TF-IDF + logistic regression: 0.51
-- TF-IDF + random forest: 0.53
-
-Lastly, I have performed the result analysis for the trained BERT model, please refer to the "BERT Model Result Analysis" section for more details.
+Lastly, a result analysis for the trained BERT model is performed, please refer to the "BERT Model Result Analysis" section for more details.
 
 # About datapipeline_6estate.py
 
 This is the core pipeline for data cleaning and modelling.
 
-There are two classes that can be imported to use: "DataPipeline" and "Model"
+There are two classes that can be imported to use: DataPipeline() and Model()
 
-- "DataPipeline" is a one-stop cleaning pipeline built for general pre-processing of train, test, val or any other datasets from raw text data into cleaned text data.
+- "DataPipeline" is a one-stop cleaning pipeline built for general pre-processing of train, test, val or any other datasets.
 
-- "Model" is a wrapper for HuggingFace distilled BERT model. I have chosen the distilled BERT model as it is the most advanced bidirectional NLP model with outstanding performance in language understanding. The benefit of BERT is that it can understand the grammar, context, sequence and punctuations apart from word itself. As the dataset is not big in size, a smaller/distilled version of the model is sufficient.
+- "Model" is a wrapper class for HuggingFace BERT model. I have chosen BERT model as it's the most advanced bidirectional NLP model with outstanding performance in language understanding. The benefit of BERT is that it can understand the grammar, context, sequence and punctuations apart from word itself. 
 
 # About experiment_6estate.py
 
@@ -219,7 +224,7 @@ Based on the trained model, we can get the confusion matrix as below(refer to th
 
 <img src=".\confusion_matrix.png" alt="confusion matrix" style="zoom:50%;" />
 
-In addition, the recall is 0.9 and precision is 0.86, both of them are acceptable as expected. The predicted labels can be found in 📜predicted.csv.
+In addition, the recall is 0.9 and precision is 0.86, both of them are acceptable as expected. 
 
 # Reference
 
