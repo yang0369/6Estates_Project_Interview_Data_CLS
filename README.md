@@ -59,7 +59,7 @@ The models that I have tried are:
 
 ┣ 📂data
 
-> Data folder, contains all the train, dev, test datasets, and one word embedding file (which I did not use in this project). All the data files were not uploaded to Git due to size limit
+> Data folder, contains all the train, dev, test datasets, and one word embedding file (which I did not use in this project). data folder was not uploaded to Git due to size limit
 
  ┣ 📂model
 
@@ -69,7 +69,7 @@ The models that I have tried are:
 >
 >    - 📜history.csv: contains the loss/accuracy during training and validation, used for plotting graph
 >    - 📜predicted.csv: contains all the predicted labels for test dataset
->    - 📜tf_model.h5: the trained model in .h5 format
+>    - 📜tf_model.h5: the trained model in .h5 format (not uploaded due to size limit)
 >    - 📜info.log: records all the hyperparameters/parameters during training process
 >    - 📜training_logs: records all the training epochs, train/val accuracy and loss etc.
 
@@ -189,7 +189,7 @@ In addition, to run Polyaxon experiment, we also need the config files below:
 
 The trained BERT model has the best performance of ***0.88*** binary accuracy, which is much better than our benchmark model's performance.
 
-<img src="C:\Users\kewen\AppData\Roaming\Typora\typora-user-images\image-20210613150640892.png" alt="loss and accuracy graph during model training" style="zoom:50%;" />
+<img src=".\train_graph.png" alt="loss and accuracy graph during model training" style="zoom:50%;" />
 
 Based on the graph above, we can see the BERT model learns the training data quite fast, train and val graph crosses at epoch 2, and then the validation accuracy becomes quite stable. By test and error, I have figured out the best set of hyperparameters as below (partially shown here):
 
@@ -209,7 +209,7 @@ Based on the graph above, we can see the BERT model learns the training data qui
 
 Based on the trained model, we can get the confusion matrix as below(refer to the analysis.ipynb for more details)
 
-<img src="C:\Users\kewen\AppData\Roaming\Typora\typora-user-images\image-20210613150249212.png" alt="confusion matrix" style="zoom:50%;" />
+<img src=".\confusion_matrix.png" alt="confusion matrix" style="zoom:50%;" />
 
 In addition, the recall is 0.9 and precision is 0.86, both of them are acceptable as expected.
 
