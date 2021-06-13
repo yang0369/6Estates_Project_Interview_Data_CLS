@@ -12,11 +12,11 @@ datapipe:
 model:
   MODEL : "bert-base-uncased"
   NUM_LABELS : 1
-  BATCH_SIZE : 32
-  LEARNING_RATE : 0.00003
-  LR_PATIENCE: 3
-  ES_PATIENCE: 20
-  FACTOR : 0.5
-  EPOCHS : 5
-  MAX_LENGTH : 128
+  BATCH_SIZE : 128
+  LEARNING_RATE : 0.00005
+  LR_PATIENCE: 6
+  ES_PATIENCE: 15
+  FACTOR : 0.9
+  EPOCHS : 100
+  MAX_LENGTH : 512
   PATH: "/polyaxon-data/workspace/kewen_yang/X-Train/6estate"
