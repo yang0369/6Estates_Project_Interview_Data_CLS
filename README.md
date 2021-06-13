@@ -2,7 +2,7 @@
 
 This project is about an interview assignment with a binary sentiment analysis problem.
 
-To address the stated problem, I have tried with a few traditional NLP models.
+To address the stated problem, I have tried with two traditional NLP models and one cutting edge transformer model.
 
 The models that I have tried are:
 
