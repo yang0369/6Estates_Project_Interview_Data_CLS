@@ -224,7 +224,7 @@ Based on the trained model, we can get the confusion matrix as below(refer to th
 
 <img src=".\confusion_matrix.png" alt="confusion matrix" style="zoom:50%;" />
 
-In addition, the recall is 0.9 and precision is 0.86, both of them are acceptable as expected. 
+Based on the matrix, the recall is calculated as 0.9 and precision is 0.86. 
 
 # Reference
 
